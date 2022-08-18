@@ -9,7 +9,8 @@ import sys
 def fxnFileTypes():  ### returns a list of all file types in a given path
     path = r'/home/carlson/Documents/programming/'
     for roots, dirs, files in os.walk(path):
-        print (files)
+        if dirs!=[]:
+            print (dirs)
 
 
 fxnFileTypes()       
