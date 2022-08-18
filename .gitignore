@@ -1,1 +1,2 @@
+## files and or directories to not be tracked by git
 __pycache__

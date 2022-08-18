@@ -9,7 +9,5 @@ Auto arranges files in  path specified by user, following rules/standard specifi
 - program create a map for all available files once done arranging directories.
 
 ### Languages/frameworks used
-- Python 3
+- Python3.8+
 - pyQt5 
-- python OS module
-- python RegEx module
