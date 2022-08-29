@@ -25,7 +25,6 @@ def fxnOtherTypes(path):
                 ext_set.add(x.suffix)
     return ext_set
 
-
 ### returns a dictionary with filetypes as keys and lists of files with of those types as values
 def fxnGroupSimilar(path):
     dict = {}
@@ -35,18 +34,42 @@ def fxnGroupSimilar(path):
 
 ### returns a list of duplicate file lists from  given two directories.
 def fxnCheckDuplicate(src, dest):
-    # src = PurePath(src)
-    # dest = PurePath(dest)
     dup_list = []
+    src_list = []
+    dest_list = []
     if src == dest:
         return []
-
+    if src.is_file() or dest.is_file():
+        return []
+    else:
+        src_list = os.listdir(src)
+        dest_list = os.listdir(dest)
+        for i in src_list:
+            if i in dest_list:
+                for j in src_list:
+                    if i == j:
+                        dup_list.append([i, j])
     return dup_list
 
 ### returns dictionary of filetype frequencies for given path
-def fxnTypeFrequency(path):
+"""
+It ignores filetypes not included in win_exts
+Also, it doesn't pick .txt files on Posix
+"""
+def fxnTypeFrequency(path):  
     dict = {}
-    return dict()
+    ext_list = list()
+    for file in path.iterdir():
+        if file.is_file():
+            if file.suffix in datas.win_exts:
+                ext_list.append(file.suffix)
+    for i in ext_list:
+        num = ext_list.count(i)
+        if i in dict:
+            continue
+        else:
+            dict[i] = num
+    return dict
 
 ### Returns a tree structure(list) of all files(and their extensions) of any given path
 def fxnFileMap(path):
@@ -65,11 +88,13 @@ def fxnSmartDir(rules):
     return True ## returns true if no faults.
 
 
- ###### test function calls 
-print(fxnFileTypes(path))
+###### test function calls 
+p1 = Path("/home/carlson/Documents/programming/test_dir/fol1")
+p2 = Path("/home/carlson/Documents/programming/test_dir/fol2")
+# print(fxnFileTypes(path))
 # print(fxnOtherTypes(path))
 # # print(fxnGroupSimilar(path))
-# print(fxnCheckDuplicate())
-# print(fxnTypeFrequency())
-# print(fxnFileMap())
+# print(fxnCheckDuplicate(p1, p2))
+# print(fxnTypeFrequency(p1))
+print(fxnFileMap())
 # print(fxnSmartDir())
