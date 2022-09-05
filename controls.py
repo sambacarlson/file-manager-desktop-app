@@ -74,6 +74,8 @@ def fxnTypeFrequency(path):
 ### Returns a tree structure(list) of all files(and their extensions) of any given path
 def fxnFileMap(path):
     _map =[]
+    
+            
     return _map
 
 ###  Analyses rules and returns detailed dictionary of changes to be effected
@@ -96,5 +98,5 @@ p2 = Path("/home/carlson/Documents/programming/test_dir/fol2")
 # # print(fxnGroupSimilar(path))
 # print(fxnCheckDuplicate(p1, p2))
 # print(fxnTypeFrequency(p1))
-print(fxnFileMap())
+print(fxnFileMap(path))
 # print(fxnSmartDir())

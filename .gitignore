@@ -1,2 +1,5 @@
 ## files and or directories to not be tracked by git
 __pycache__
+
+#rough.ipynb is where I do rough work
+rough.ipynb  
